@@ -33,9 +33,9 @@ func list(ctx *cli.Context) error {
 		if value.GetStatusCode() >= 200 && value.GetStatusCode() < 300 {
 			for _, v := range value.GetTokenList() {
 				if v.GetLife() < 0 {
-					fmt.Printf("token: %s\ncreate time: %s\nlife: permanent \n\n", v.GetToken(), v.GetCreateTime())
+					fmt.Printf("token: %s\ncreate time: %s\nlife: permanent\nadmin: %t\nvalid now: always\n\n", v.GetToken(), v.GetCreateTime(), v.GetIsAdmin())
 				} else {
-					fmt.Printf("token: %s\ncreate time: %s\nlife: %d minutes\n\n", v.GetToken(), v.GetCreateTime(), v.GetLife())
+					fmt.Printf("token: %s\ncreate time: %s\nlife: %d minutes\nadmin: %t\nvalid now: %t\n\n", v.GetToken(), v.GetCreateTime(), v.GetLife(), v.GetIsAdmin(), v.GetValid())
 				}
 			}
 		}
